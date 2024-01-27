@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'customers.apps.CustomersConfig',
     # Third-party apps
     'django_countries',
+    'import_export',
 
 ]
 
@@ -134,3 +135,8 @@ MEDIA_ROOT = BASE_DIR / 'mediafiles'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# pip install django-import-export
+# https://pypi.org/project/django-import-export/
+
