@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'books.apps.BooksConfig',
     'publishers.apps.PublishersConfig',
     'rentals.apps.RentalsConfig',
+    'customers.apps.CustomersConfig',
     # Third-party apps
     'django_countries',
 
