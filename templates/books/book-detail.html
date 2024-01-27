@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>Books</h1>
+      <a href="{% url 'book_new' %}" class="btn btn-primary">Create</a>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ book_title.title }}</td>
+            <td>{{ book_title.author }}</td>
+            <td>
+              <a href="{% url 'book_detail' book_title.id %}" class="btn btn-primary">Show</a>
+              <a href="#" class="btn btn-primary">Edit</a>
+              <form action="#" method="POST" style="display: inline-block;">
+                {% csrf_token %}
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+```

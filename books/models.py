@@ -21,6 +21,10 @@ class BookTitle(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    @property
+    def books(self):
+        return self.book_set.all()
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
