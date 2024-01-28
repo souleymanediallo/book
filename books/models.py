@@ -10,6 +10,13 @@ from io import BytesIO
 from django.core.files import File
 from PIL import Image
 
+STATUS_CHOICES = (
+        ('#01', 'rented'),
+        ('#02', 'returned'),
+        ('#03', 'lost'),
+        ('#04', 'delayed'),
+    )
+
 
 # pip install qrcode : https://pypi.org/project/qrcode/
 # Create your models here.
@@ -40,6 +47,13 @@ class Book(models.Model):
     qr_code = models.ImageField(upload_to='qr_codes', blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    @property
+    def status(self):
+        if len(self.bookitem_set.all()) > 0:
+            statues = dict(STATUS_CHOICES)
+            return statues[self.rental_set.first().status]
+        return False
 
     def save(self, *args, **kwargs):
         if not self.book_id:

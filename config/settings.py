@@ -46,10 +46,20 @@ INSTALLED_APPS = [
     # Third-party apps
     'django_countries',
     'import_export',
+    'tailwind',
+    'theme',
+    'django_browser_reload',
 
 ]
 
+TAILWIND_APP_NAME = 'theme'
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
 MIDDLEWARE = [
+    'django_browser_reload.middleware.BrowserReloadMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -136,7 +147,10 @@ MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#TAILWIND_APP_NAME = 'theme'
 
 # pip install django-import-export
 # https://pypi.org/project/django-import-export/
 
+# pip install django-tailwind
+# https://django-tailwind.readthedocs.io/en/latest/

@@ -4,14 +4,16 @@ from customers.models import Customer
 from datetime import timedelta
 
 
-# Create your models here.
-class Rental(models.Model):
-    STATUS_CHOICES = (
+STATUS_CHOICES = (
         ('#01', 'rented'),
         ('#02', 'returned'),
         ('#03', 'lost'),
         ('#04', 'delayed'),
     )
+
+
+# Create your models here.
+class Rental(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='book_rentals')
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='customer_rentals')
     status = models.CharField(max_length=3, choices=STATUS_CHOICES, default='#01')
